@@ -1,0 +1,29 @@
+<div style="margin: 20px; font-family: Arial, sans-serif;">
+  <h2>Iniciar Sesión</h2>
+  
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label>Correo:</label><br>
+      <input type="email" formControlName="correo" placeholder="ejemplo@correo.com">
+      <div *ngIf="loginForm.get('correo')?.invalid && loginForm.get('correo')?.touched" style="color: red; font-size: 12px;">
+        Ingresa un correo válido.
+      </div>
+    </div>
+
+    <br>
+
+    <div>
+      <label>Contraseña:</label><br>
+      <input type="password" formControlName="password" placeholder="Tu contraseña">
+      <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" style="color: red; font-size: 12px;">
+        La contraseña es obligatoria.
+      </div>
+    </div>
+
+    <br>
+
+    <button type="submit" [disabled]="loginForm.invalid">Entrar</button>
+  </form>
+
+  <p *ngIf="mensajeError" style="color: red;">{{ mensajeError }}</p>
+</div>
