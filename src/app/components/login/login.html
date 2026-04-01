@@ -1,29 +1,39 @@
-<div style="margin: 20px; font-family: Arial, sans-serif;">
-  <h2>Iniciar Sesión</h2>
-  
-  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-    <div>
-      <label>Correo:</label><br>
-      <input type="email" formControlName="correo" placeholder="ejemplo@correo.com">
-      <div *ngIf="loginForm.get('correo')?.invalid && loginForm.get('correo')?.touched" style="color: red; font-size: 12px;">
-        Ingresa un correo válido.
+<div class="container-fluid bg-light vh-100 d-flex align-items-center justify-content-center">
+  <div class="card shadow-lg border-0" style="width: 100%; max-width: 400px;">
+    <div class="card-body p-5">
+      
+      <h2 class="text-center fw-bold text-primary mb-4">Iniciar Sesión</h2>
+
+      <div *ngIf="mensajeError" class="alert alert-danger py-2 text-center" role="alert">
+        {{ mensajeError }}
       </div>
+
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Correo Electrónico</label>
+          <input type="email" 
+                 class="form-control form-control-lg" 
+                 formControlName="correo" 
+                 placeholder="nombre@ejemplo.com">
+        </div>
+
+        <div class="mb-4">
+          <label class="form-label fw-semibold">Contraseña</label>
+          <input type="password" 
+                 class="form-control form-control-lg" 
+                 formControlName="password" 
+                 placeholder="••••••••">
+        </div>
+
+        <button type="submit" 
+                class="btn btn-primary btn-lg w-100 shadow-sm" 
+                [disabled]="loginForm.invalid">
+          Ingresar
+        </button>
+
+      </form>
+
     </div>
-
-    <br>
-
-    <div>
-      <label>Contraseña:</label><br>
-      <input type="password" formControlName="password" placeholder="Tu contraseña">
-      <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" style="color: red; font-size: 12px;">
-        La contraseña es obligatoria.
-      </div>
-    </div>
-
-    <br>
-
-    <button type="submit" [disabled]="loginForm.invalid">Entrar</button>
-  </form>
-
-  <p *ngIf="mensajeError" style="color: red;">{{ mensajeError }}</p>
+  </div>
 </div>

@@ -1,0 +1,13 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  background-color: #f8f9fa; /* Gris muy claro de Bootstrap */
+}
+
+.card {
+  border-radius: 15px;
+}
+
+.navbar {
+  padding: 0.8rem 1rem;
+}
